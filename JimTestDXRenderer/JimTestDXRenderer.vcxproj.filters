@@ -4,27 +4,30 @@
     <Filter Include="JimRendererApp">
       <UniqueIdentifier>{21f50b37-34c2-485d-9e45-e4fd64eb409b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine">
+    <Filter Include="GameEngine">
       <UniqueIdentifier>{c6b40194-89ab-4bb3-9b10-51eb6cf031f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Window">
+      <UniqueIdentifier>{9c511277-dec1-4fb1-b8f3-e56d3d7e2cb7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>JimRendererApp</Filter>
     </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
     <ClCompile Include="AppWindow.cpp">
       <Filter>JimRendererApp</Filter>
     </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>GameEngine\Window</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Window.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
     <ClInclude Include="AppWindow.h">
       <Filter>JimRendererApp</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>GameEngine\Window</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -5,7 +5,7 @@ class AppWindow: public Window
 {
 public:
 	AppWindow();
-	//~AppWindow();
+	//~AppWindow(); //Comment out to avoid unresolved external
 
 	// Inherited via Window
 	virtual void onCreate() override;

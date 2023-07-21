@@ -1,6 +1,7 @@
 #pragma once
 #include <Windows.h> // Windows API
-//#pragma comment(lib,"user32.lib") 
+#include <iostream>
+
 class Window
 {
 public:

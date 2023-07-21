@@ -1,7 +1,7 @@
 #include "Window.h"
 
 
-Window* window = nullptr;
+//Window* window = nullptr;
 
 Window::Window()
 {
@@ -14,6 +14,8 @@ LRESULT CALLBACK WinProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	case WM_CREATE:
 	{
 		// Event when window is created
+		Window* window = (Window*)((LPCREATESTRUCT)lParam)->lpCreateParams;
+		SetWindowLongPtr(hwnd, GWLP_USERDATA, (LONG_PTR)window);
 		window->onCreate();
 		break;
 	}
@@ -21,6 +23,9 @@ LRESULT CALLBACK WinProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	case WM_DESTROY:
 	{
 		// Event when window is destoyed
+		Window* window = (Window*)GetWindowLongPtr(hwnd, GWLP_USERDATA);
+
+		std::cout << "[ENGINE_INFO] Destroy window is called " << std::endl;
 		window->onDestroy();
 		::PostQuitMessage(0);
 		break;
@@ -41,7 +46,6 @@ LRESULT CALLBACK WinProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	// For messages we don't handle, call the default window procedure.
 	return DefWindowProc(hwnd, uMsg, wParam, lParam);
 }
-
 
 bool Window::init()
 {
@@ -64,14 +68,9 @@ bool Window::init()
 		return false;
 	}
 
-	if (!window)
-	{
-		window = this; // window must be set before CreateWindowEx()
-	}
-
 	mHwnd = ::CreateWindowEx(WS_EX_OVERLAPPEDWINDOW, "JimTempWindowClass", "JimTestDXRenderer", WS_OVERLAPPEDWINDOW,
-		CW_USEDEFAULT, CW_USEDEFAULT, 1024, 768, NULL, NULL, NULL, NULL);
-	// "JimTempWindowClass" is the same string to wc.lpszClassName
+		CW_USEDEFAULT, CW_USEDEFAULT, 1024, 768, NULL, NULL, NULL, this);
+	// "JimTempWindowClass" must be the same string to wc.lpszClassName
 
 	if (!mHwnd) 
 	{
@@ -116,7 +115,7 @@ bool Window::broadcast()
 		DispatchMessage(&msg);
 	}
 
-	window->onUpdate();
+	this->onUpdate();
 	Sleep(0);
 
 	return false;
