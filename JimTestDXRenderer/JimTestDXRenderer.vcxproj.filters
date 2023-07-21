@@ -10,6 +10,9 @@
     <Filter Include="GameEngine\Window">
       <UniqueIdentifier>{9c511277-dec1-4fb1-b8f3-e56d3d7e2cb7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameEngine\GraphicsRenderer">
+      <UniqueIdentifier>{4f2296e1-af64-450d-8bb2-5a7a417cd209}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -21,6 +24,9 @@
     <ClCompile Include="Window.cpp">
       <Filter>GameEngine\Window</Filter>
     </ClCompile>
+    <ClCompile Include="GraphicsRenderer.cpp">
+      <Filter>GameEngine\GraphicsRenderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppWindow.h">
@@ -28,6 +34,9 @@
     </ClInclude>
     <ClInclude Include="Window.h">
       <Filter>GameEngine\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsRenderer.h">
+      <Filter>GameEngine\GraphicsRenderer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
