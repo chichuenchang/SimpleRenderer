@@ -12,12 +12,14 @@ public:
 	bool release();
 	bool isRun();
 
+	RECT getClientWindowRect();
 
 	//Events
 	virtual void onCreate();
 	virtual void onUpdate() = 0;
 	virtual void onDestroy();
-
+public:
+	bool SetHwnd(const HWND& hwnd);
 
 	//~Window();
 

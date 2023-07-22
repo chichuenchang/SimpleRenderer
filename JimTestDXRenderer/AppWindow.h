@@ -12,5 +12,7 @@ public:
 	virtual void onCreate() override;
 	virtual void onUpdate() override;
 	virtual void onDestroy() override;
+private:
+	SwapChain* mSwapChain;
 };
 

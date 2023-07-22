@@ -17,6 +17,7 @@ LRESULT CALLBACK WinProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		Window* window = (Window*)((LPCREATESTRUCT)lParam)->lpCreateParams;
 		SetWindowLongPtr(hwnd, GWLP_USERDATA, (LONG_PTR)window);
 		std::cout << "[TEMP] Windows Procedure gets message CREATE " << std::endl;
+		window->SetHwnd(hwnd);
 		window->onCreate();
 		break;
 	}
@@ -25,7 +26,6 @@ LRESULT CALLBACK WinProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	{
 		// Event when window is destoyed
 		Window* window = (Window*)GetWindowLongPtr(hwnd, GWLP_USERDATA);
-
 
 		window->onDestroy();
 		::PostQuitMessage(0);
@@ -140,6 +140,13 @@ bool Window::isRun()
 	return mIsRun;
 }
 
+RECT Window::getClientWindowRect()
+{
+	RECT rect;
+	::GetClientRect(this->mHwnd, &rect);
+	return rect;
+}
+
 void Window::onCreate()
 {
 	std::cout << "[TEMP] Window::onCreate() is called" << std::endl;
@@ -149,4 +156,10 @@ void Window::onDestroy()
 {
 	std::cout << "[TEMP] Destroy window is called " << std::endl;
 	mIsRun = false;
+}
+
+bool Window::SetHwnd(const HWND & hwnd)
+{
+	mHwnd = hwnd;
+	return true;
 }

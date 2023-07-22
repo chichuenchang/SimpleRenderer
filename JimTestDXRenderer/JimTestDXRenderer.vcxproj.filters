@@ -13,6 +13,9 @@
     <Filter Include="GameEngine\GraphicsRenderer">
       <UniqueIdentifier>{4f2296e1-af64-450d-8bb2-5a7a417cd209}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameEngine\GraphicsRenderer\SwapChain">
+      <UniqueIdentifier>{8d2d26bf-19f1-4ac8-863e-d96af190450a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -27,6 +30,9 @@
     <ClCompile Include="GraphicsRenderer.cpp">
       <Filter>GameEngine\GraphicsRenderer</Filter>
     </ClCompile>
+    <ClCompile Include="SwapChain.cpp">
+      <Filter>GameEngine\GraphicsRenderer\SwapChain</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppWindow.h">
@@ -37,6 +43,9 @@
     </ClInclude>
     <ClInclude Include="GraphicsRenderer.h">
       <Filter>GameEngine\GraphicsRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="SwapChain.h">
+      <Filter>GameEngine\GraphicsRenderer\SwapChain</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -36,11 +36,19 @@ bool GraphicsRenderer::init()
 		}
 	}
 
+	mD3dDevice->QueryInterface(__uuidof(IDXGIDevice), (void**)&mDxgiDevice);
+	mDxgiDevice->GetParent(__uuidof(IDXGIAdapter), (void**)&mDxgiAdapter);
+	mDxgiAdapter->GetParent(__uuidof(IDXGIFactory), (void**)&mDxgiFacotory);
+
 	return true;
 }
 
 bool GraphicsRenderer::release()
 {
+	mDxgiFacotory->Release();
+	mDxgiAdapter->Release();
+	mDxgiDevice->Release();
+
 	mDeviceContext->Release();
 	mD3dDevice->Release();
 
@@ -51,5 +59,10 @@ GraphicsRenderer * GraphicsRenderer::get()
 {
 	static GraphicsRenderer renderer;
 	return &renderer;
+}
 
+bool GraphicsRenderer::createSwapChain(SwapChain** swapChain)
+{
+	*swapChain = new SwapChain();
+	return true;
 }
