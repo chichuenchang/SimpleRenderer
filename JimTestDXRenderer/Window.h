@@ -16,11 +16,10 @@ public:
 
 	//Events
 	virtual void onCreate();
-	virtual void onUpdate() = 0;
+	virtual void onUpdate();
 	virtual void onDestroy();
 public:
 	bool SetHwnd(const HWND& hwnd);
-
 	//~Window();
 
 protected:

@@ -21,11 +21,11 @@ bool GraphicsRenderer::init()
 	};
 	UINT num_feature_levels = ARRAYSIZE(feature_levels);
 
-
+	ID3D11DeviceContext * tempDeviceContext;
 	for (UINT i = 0; i < num_driver_types; i++)
 	{
 		HRESULT result = D3D11CreateDevice(NULL, driver_types[i], NULL, NULL, feature_levels, 
-			num_feature_levels, D3D11_SDK_VERSION, &mD3dDevice, &mFeatureLevel, &mDeviceContext);
+			num_feature_levels, D3D11_SDK_VERSION, &mD3dDevice, &mFeatureLevel, &tempDeviceContext);
 		if (SUCCEEDED(result))
 		{
 			break;
@@ -40,6 +40,8 @@ bool GraphicsRenderer::init()
 	mDxgiDevice->GetParent(__uuidof(IDXGIAdapter), (void**)&mDxgiAdapter);
 	mDxgiAdapter->GetParent(__uuidof(IDXGIFactory), (void**)&mDxgiFacotory);
 
+	mDeviceContext = new DeviceContext(tempDeviceContext);
+
 	return true;
 }
 
@@ -49,7 +51,7 @@ bool GraphicsRenderer::release()
 	mDxgiAdapter->Release();
 	mDxgiDevice->Release();
 
-	mDeviceContext->Release();
+	mDeviceContext->release();
 	mD3dDevice->Release();
 
 	return true;
@@ -65,4 +67,29 @@ bool GraphicsRenderer::createSwapChain(SwapChain** swapChain)
 {
 	*swapChain = new SwapChain();
 	return true;
+}
+
+ID3D11Device * GraphicsRenderer::getD3d11Device()
+{
+	return mD3dDevice;
+}
+
+IDXGIDevice * GraphicsRenderer::getDxgiDevice()
+{
+	return mDxgiDevice;
+}
+
+IDXGIAdapter * GraphicsRenderer::getDxgiAdapter()
+{
+	return mDxgiAdapter;
+}
+
+IDXGIFactory * GraphicsRenderer::getDxgiFactory()
+{
+	return mDxgiFacotory;
+}
+
+DeviceContext * GraphicsRenderer::getDeviceContext()
+{
+	return mDeviceContext;
 }

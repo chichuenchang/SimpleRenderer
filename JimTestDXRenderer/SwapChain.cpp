@@ -24,15 +24,40 @@ bool SwapChain::init(HWND hwnd, UINT width, UINT height)
 	desc.Windowed = TRUE;
 	desc.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
 
-	IDXGIDevice* mDxgiDevice = renderer->mDxgiDevice;
+	ID3D11Device* d3d11Device = renderer->getD3d11Device();
 
-
-	HRESULT result = renderer->mDxgiFacotory->CreateSwapChain(mDxgiDevice, &desc, &mDxgiSwapChain);
+	HRESULT result = renderer->getDxgiFactory()->CreateSwapChain(d3d11Device, &desc, &mDxgiSwapChain);
 	if (FAILED(result))
 	{
 		return false;
 	}
-	return false;
+
+	ID3D11Texture2D* buffer = NULL;
+	result = mDxgiSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)&buffer);
+	if (FAILED(result))
+	{
+		return false;
+	}
+
+	result = d3d11Device->CreateRenderTargetView(buffer, NULL, &mD3d11RenderTargetView);
+	buffer->Release();
+	if (FAILED(result))
+	{
+		return false;
+	}
+
+
+	return true;
+}
+
+bool SwapChain::present(const bool & vsync)
+{
+	HRESULT result = mDxgiSwapChain->Present(vsync, NULL);
+	if (FAILED(result))
+	{
+		return false;
+	}
+	return true;
 }
 
 bool SwapChain::release()
@@ -44,4 +69,9 @@ bool SwapChain::release()
 	}
 	delete this;
 	return true;
+}
+
+ID3D11RenderTargetView * SwapChain::getD3d11RenderTargetView()
+{
+	return mD3d11RenderTargetView;
 }

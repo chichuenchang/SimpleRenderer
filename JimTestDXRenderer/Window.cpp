@@ -108,7 +108,7 @@ bool Window::broadcast()
 	MSG msg;
 	while (::PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) 
 	{
-		//  examine the application's message queue from Windows
+		// examine the application's message queue from Windows
 		if (msg.message == WM_QUIT)
 			break;
 
@@ -131,7 +131,6 @@ bool Window::release()
 			return false;
 		}
 	}
-
 	return true;
 }
 
@@ -150,6 +149,11 @@ RECT Window::getClientWindowRect()
 void Window::onCreate()
 {
 	std::cout << "[TEMP] Window::onCreate() is called" << std::endl;
+}
+
+void Window::onUpdate()
+{
+	return;
 }
 
 void Window::onDestroy()

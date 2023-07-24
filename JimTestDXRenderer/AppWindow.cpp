@@ -1,6 +1,7 @@
 #include "AppWindow.h"
 
-AppWindow::AppWindow()
+AppWindow::AppWindow():
+	mSwapChain(NULL)
 {
 
 }
@@ -34,6 +35,15 @@ void AppWindow::onCreate()
 
 void AppWindow::onUpdate()
 {
+	Window::onUpdate();
+	std::vector<float> clearcolor = { 1.0f, 0.0f, 0.0f, 1.0f };
+	GraphicsRenderer::get()->getDeviceContext()->clearRenderTargetColor(mSwapChain, clearcolor);
+
+	bool myResult = mSwapChain->present(true);
+	if (!myResult)
+	{
+		std::cout << "[ERROR] SwapChain Present Failed" << std::endl;
+	}
 }
 
 void AppWindow::onDestroy()
