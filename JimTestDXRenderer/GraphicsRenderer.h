@@ -14,8 +14,7 @@ public:
 
 	//~GraphicsRenderer();
 	static GraphicsRenderer* get();
-public:
-	bool createSwapChain(SwapChain** swapChain);
+
 private:
 	ID3D11Device* mD3dDevice;
 	D3D_FEATURE_LEVEL mFeatureLevel;
@@ -28,9 +27,14 @@ public:
 	IDXGIDevice* getDxgiDevice();
 	IDXGIAdapter* getDxgiAdapter();
 	IDXGIFactory* getDxgiFactory();
+
+public:
+	bool createSwapChain();
 private:
 	DeviceContext* mDeviceContext;
+	SwapChain* mSwapChain;
 public:
 	DeviceContext* getDeviceContext();
+	SwapChain* getSwapChain();
 };
 

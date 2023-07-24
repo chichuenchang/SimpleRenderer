@@ -9,7 +9,7 @@ int main()
 		while (app.isRun())
 		{
 			app.broadcast();
-			app.release();
+			//app.release();
 		}
 	}
 

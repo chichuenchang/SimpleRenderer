@@ -1,6 +1,8 @@
 #include "GraphicsRenderer.h"
 
-GraphicsRenderer::GraphicsRenderer()
+GraphicsRenderer::GraphicsRenderer():
+	mDeviceContext(nullptr),
+	mSwapChain(nullptr)
 {
 }
 
@@ -63,9 +65,9 @@ GraphicsRenderer * GraphicsRenderer::get()
 	return &renderer;
 }
 
-bool GraphicsRenderer::createSwapChain(SwapChain** swapChain)
+bool GraphicsRenderer::createSwapChain()
 {
-	*swapChain = new SwapChain();
+	mSwapChain = new SwapChain();
 	return true;
 }
 
@@ -92,4 +94,9 @@ IDXGIFactory * GraphicsRenderer::getDxgiFactory()
 DeviceContext * GraphicsRenderer::getDeviceContext()
 {
 	return mDeviceContext;
+}
+
+SwapChain * GraphicsRenderer::getSwapChain()
+{
+	return mSwapChain;
 }
