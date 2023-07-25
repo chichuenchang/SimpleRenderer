@@ -43,7 +43,7 @@ bool VertexBuffer::loadVerticesToDxVertexBuffer(void* verticesList, UINT vertexS
 	D3D11_INPUT_ELEMENT_DESC layout[] = 
 	{
 		//Semantic Name, Semantic Index, Format, Input Slot, Aligned Byte offset, Input Slot Class,	Instance Data Step Rate
-		{"POSITION", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0}
+		{"POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0}
 	};
 
 	UINT layoutSize = ARRAYSIZE(layout);

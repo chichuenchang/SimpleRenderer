@@ -48,7 +48,9 @@
     <ClCompile Include="VertexBuffer.cpp">
       <Filter>GameEngine\GraphicsRenderer\VertexBuffer</Filter>
     </ClCompile>
-    <ClCompile Include="Utility.cpp" />
+    <ClCompile Include="Utility.cpp">
+      <Filter>GameEngine\Utility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppWindow.h">
@@ -69,6 +71,8 @@
     <ClInclude Include="VertexBuffer.h">
       <Filter>GameEngine\GraphicsRenderer\VertexBuffer</Filter>
     </ClInclude>
-    <ClInclude Include="Utility.h" />
+    <ClInclude Include="Utility.h">
+      <Filter>GameEngine\Utility</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
