@@ -1,4 +1,6 @@
 #include "AppWindow.h"
+#include <vector>
+#include "Utility.h"
 
 AppWindow::AppWindow()
 {
@@ -30,17 +32,43 @@ void AppWindow::onCreate()
 		std::cout << "[INFO] mSwapChain is empty" << std::endl;
 	}
 
-	RECT rect = this->getClientWindowRect();
 	if (mHwnd == NULL)
 	{
 		std::cout << "[INFO] mHwnd is empty" << std::endl;
 	}
+	RECT rect = this->getClientWindowRect();
+
 	
 	bool result = swapChain->init(this->mHwnd, rect.right-rect.left, rect.bottom- rect.top);
 	if (!result)
 	{
 		std::cout << "[ERROR] Create Swapchain failed" << std::endl;
 	}
+
+	result = renderer->createVertexBuffer();
+	VertexBuffer* vertexBuffer = renderer->getVertexBuffer();
+	if (!vertexBuffer)
+	{
+		std::cout << "[ERROR] Vertex Buffer create failed" << std::endl;
+	}
+
+	std::vector<std::vector<float>> vertices = 
+	{
+		{-0.5f, -0.5f, 0.0f},
+		{0.0f, 0.5f, 0.0f},
+		{0.5f, -0.5f, 0.0f}
+	};
+
+	renderer->createShaders();
+
+	UINT verticesListSize = Utility::convert_sizet_to_uint(vertices.size());
+	void* shaderByteCode = nullptr;
+	UINT shaderSize = 0;
+	renderer->getShaderBufferAndSize(&shaderByteCode, &shaderSize);
+	UINT s = sizeof(vertices[0]);
+	UINT a = sizeof(float);
+	vertexBuffer->loadVerticesToDxVertexBuffer(vertices.data(), sizeof(vertices[0]), verticesListSize,
+		shaderByteCode, shaderSize);
 }
 
 void AppWindow::onUpdate()
@@ -50,6 +78,14 @@ void AppWindow::onUpdate()
 	Window::onUpdate();
 	std::vector<float> clearcolor = { 1.0f, 0.0f, 0.0f, 1.0f };
 	GraphicsRenderer::get()->getDeviceContext()->clearRenderTargetColor(renderer->getSwapChain(), clearcolor);
+
+
+	RECT rect = this->getClientWindowRect();
+	renderer->getDeviceContext()->setViewPortSize(rect.right - rect.left, rect.bottom - rect.top);
+	renderer->setShaders();
+	VertexBuffer* vertexBuffer = renderer->getVertexBuffer();
+	renderer->getDeviceContext()->setVertexBuffer(vertexBuffer);
+	renderer->getDeviceContext()->drawTriangleArray(vertexBuffer->getListSize(), 0);
 
 	bool myResult = renderer->getSwapChain()->present(true);
 	if (!myResult)
@@ -61,6 +97,13 @@ void AppWindow::onUpdate()
 void AppWindow::onDestroy()
 {
 	GraphicsRenderer* renderer = GraphicsRenderer::get();
+
+	VertexBuffer* vBuffer = renderer->getVertexBuffer();
+	if (vBuffer)
+	{
+		vBuffer->release();
+	}
+
 
 	Window::onDestroy();
 	bool result = renderer->getSwapChain()->release();
