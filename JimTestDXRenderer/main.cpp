@@ -1,17 +1,53 @@
-#include "AppWindow.h"
+#pragma once
+#include "JOSEApp.h"
 
+#include <stdexcept>
 
-int main() 
+//int main() 
+//{
+//	AppWindow app;
+//	if (app.init())
+//	{
+//		while (app.isRun())
+//		{
+//			app.broadcast();
+//			//app.release();
+//		}
+//	}
+//
+//	return 0;
+//}
+
+void RunApp(JOSEApp* app)
 {
-	AppWindow app;
-	if (app.init())
+	if (app->initiate())
 	{
-		while (app.isRun())
+		while (app->isRunning())
 		{
-			app.broadcast();
-			//app.release();
+			app->update();
+			//app->release();
 		}
 	}
+	else
+	{
+		throw std::exception("[JOSEException] App initiated failed");
+	}
+}
 
-	return 0;
+int main()
+{
+	JOSEApp* app = new JOSEApp();
+	try
+	{
+		RunApp(app);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "Caught exception: " << e.what() << std::endl;
+	}
+	catch (...) {
+		// This catch block will catch any exceptions not caught by the preceding blocks.
+		std::cerr << "Caught unknown exception!" << std::endl;
+	}
+
 }

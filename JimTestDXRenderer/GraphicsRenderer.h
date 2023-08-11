@@ -14,7 +14,10 @@ public:
 	bool release();
 
 	//~GraphicsRenderer();
-	static GraphicsRenderer* get();
+	static GraphicsRenderer* getRendererInstance();
+public:
+	bool onCreate();
+	bool onUpdate();
 
 private:
 	ID3D11Device* mD3d11Device;

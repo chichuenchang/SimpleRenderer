@@ -128,6 +128,8 @@
     <ClCompile Include="AppWindow.cpp" />
     <ClCompile Include="DeviceContext.cpp" />
     <ClCompile Include="GraphicsRenderer.cpp" />
+    <ClCompile Include="JOSEApp.cpp" />
+    <ClCompile Include="JOSEGameEngine.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SwapChain.cpp" />
     <ClCompile Include="Utility.cpp" />
@@ -138,6 +140,8 @@
     <ClInclude Include="AppWindow.h" />
     <ClInclude Include="DeviceContext.h" />
     <ClInclude Include="GraphicsRenderer.h" />
+    <ClInclude Include="JOSEApp.h" />
+    <ClInclude Include="JOSEGameEngine.h" />
     <ClInclude Include="SwapChain.h" />
     <ClInclude Include="Utility.h" />
     <ClInclude Include="VertexBuffer.h" />

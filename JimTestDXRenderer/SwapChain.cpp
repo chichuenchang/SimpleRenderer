@@ -7,7 +7,7 @@ SwapChain::SwapChain()
 
 bool SwapChain::init(HWND hwnd, UINT width, UINT height)
 {
-	GraphicsRenderer* renderer = GraphicsRenderer::get();
+	GraphicsRenderer* renderer = GraphicsRenderer::getRendererInstance();
 
 	DXGI_SWAP_CHAIN_DESC desc;
 	ZeroMemory(&desc, sizeof(DXGI_SWAP_CHAIN_DESC));

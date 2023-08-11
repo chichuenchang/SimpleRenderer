@@ -7,70 +7,70 @@ Window::Window()
 {
 }
 
-LRESULT CALLBACK WinProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+//LRESULT CALLBACK WinProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+//{
+//	switch (uMsg)
+//	{
+//	case WM_CREATE:
+//	{
+//		// Event when window is created
+//		Window* window = (Window*)((LPCREATESTRUCT)lParam)->lpCreateParams;
+//		SetWindowLongPtr(hwnd, GWLP_USERDATA, (LONG_PTR)window);
+//		std::cout << "[TEMP] Windows Procedure gets message CREATE " << std::endl;
+//		window->SetHwnd(hwnd);
+//		window->onCreate();
+//		break;
+//	}
+//
+//	case WM_DESTROY:
+//	{
+//		// Event when window is destoyed
+//		Window* window = (Window*)GetWindowLongPtr(hwnd, GWLP_USERDATA);
+//
+//		window->onDestroy();
+//		::PostQuitMessage(0);
+//		break;
+//	}
+//
+//	default:
+//	{
+//		return ::DefWindowProc(hwnd, uMsg, wParam, lParam);
+//	}
+//
+//	case WM_CLOSE:
+//	{
+//		::PostQuitMessage(0);
+//		return 0;
+//	}
+//	}
+//
+//	// For messages we don't handle, call the default window procedure.
+//	return DefWindowProc(hwnd, uMsg, wParam, lParam);
+//}
+
+bool Window::initiate(JOSEApp* appInstance)
 {
-	switch (uMsg)
-	{
-	case WM_CREATE:
-	{
-		// Event when window is created
-		Window* window = (Window*)((LPCREATESTRUCT)lParam)->lpCreateParams;
-		SetWindowLongPtr(hwnd, GWLP_USERDATA, (LONG_PTR)window);
-		std::cout << "[TEMP] Windows Procedure gets message CREATE " << std::endl;
-		window->SetHwnd(hwnd);
-		window->onCreate();
-		break;
-	}
+	//WNDCLASSEXA wc;
+	//wc.cbClsExtra = NULL;
+	//wc.cbSize = sizeof(WNDCLASSEXA);
+	//wc.cbWndExtra = NULL;
+	//wc.hbrBackground = (HBRUSH)COLOR_WINDOW;
+	//wc.hCursor = LoadCursor(NULL, IDC_ARROW);
+	//wc.hIcon = LoadIcon(NULL, IDI_APPLICATION);
+	//wc.hIconSm = LoadIcon(NULL, IDI_APPLICATION);
+	//wc.hInstance = NULL;
+	//wc.lpszClassName = "JimTempWindowClass";
+	//wc.lpszMenuName = "JimMenu";
+	//wc.style = NULL;
+	//wc.lpfnWndProc = WindowsPrcedure;
 
-	case WM_DESTROY:
-	{
-		// Event when window is destoyed
-		Window* window = (Window*)GetWindowLongPtr(hwnd, GWLP_USERDATA);
-
-		window->onDestroy();
-		::PostQuitMessage(0);
-		break;
-	}
-
-	default:
-	{
-		return ::DefWindowProc(hwnd, uMsg, wParam, lParam);
-	}
-
-	case WM_CLOSE:
-	{
-		::PostQuitMessage(0);
-		return 0;
-	}
-	}
-
-	// For messages we don't handle, call the default window procedure.
-	return DefWindowProc(hwnd, uMsg, wParam, lParam);
-}
-
-bool Window::init()
-{
-	WNDCLASSEXA wc;
-	wc.cbClsExtra = NULL;
-	wc.cbSize = sizeof(WNDCLASSEXA);
-	wc.cbWndExtra = NULL;
-	wc.hbrBackground = (HBRUSH)COLOR_WINDOW;
-	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wc.hIcon = LoadIcon(NULL, IDI_APPLICATION);
-	wc.hIconSm = LoadIcon(NULL, IDI_APPLICATION);
-	wc.hInstance = NULL;
-	wc.lpszClassName = "JimTempWindowClass";
-	wc.lpszMenuName = "JimMenu";
-	wc.style = NULL;
-	wc.lpfnWndProc = &WinProc;
-
-	if (!::RegisterClassEx(&wc))
-	{
-		return false;
-	}
+	//if (!::RegisterClassEx(&wc))
+	//{
+	//	return false;
+	//}
 
 	mHwnd = ::CreateWindowEx(WS_EX_OVERLAPPEDWINDOW, "JimTempWindowClass", "JimTestDXRenderer", WS_OVERLAPPEDWINDOW,
-		CW_USEDEFAULT, CW_USEDEFAULT, 1024, 768, NULL, NULL, NULL, this);
+		CW_USEDEFAULT, CW_USEDEFAULT, 1024, 768, NULL, NULL, NULL, appInstance);
 	// "JimTempWindowClass" must be the same string to wc.lpszClassName
 
 	if (!mHwnd) 
@@ -165,5 +165,11 @@ void Window::onDestroy()
 bool Window::SetHwnd(const HWND & hwnd)
 {
 	mHwnd = hwnd;
+	return true;
+}
+
+bool Window::getHwnd(HWND ** hwndOut)
+{
+	*hwndOut = &mHwnd;
 	return true;
 }

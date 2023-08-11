@@ -65,7 +65,7 @@ bool GraphicsRenderer::release()
 	return true;
 }
 
-GraphicsRenderer * GraphicsRenderer::get()
+GraphicsRenderer * GraphicsRenderer::getRendererInstance()
 {
 	static GraphicsRenderer renderer;
 	return &renderer;

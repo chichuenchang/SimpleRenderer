@@ -4,75 +4,90 @@
     <Filter Include="JimRendererApp">
       <UniqueIdentifier>{21f50b37-34c2-485d-9e45-e4fd64eb409b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameEngine">
+    <Filter Include="JimObtuseSystemEngine">
       <UniqueIdentifier>{c6b40194-89ab-4bb3-9b10-51eb6cf031f8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameEngine\Window">
-      <UniqueIdentifier>{9c511277-dec1-4fb1-b8f3-e56d3d7e2cb7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameEngine\GraphicsRenderer">
+    <Filter Include="JimObtuseSystemEngine\GraphicsRenderer">
       <UniqueIdentifier>{4f2296e1-af64-450d-8bb2-5a7a417cd209}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameEngine\GraphicsRenderer\SwapChain">
+    <Filter Include="JimObtuseSystemEngine\GraphicsRenderer\SwapChain">
       <UniqueIdentifier>{8d2d26bf-19f1-4ac8-863e-d96af190450a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameEngine\GraphicsRenderer\DeviceContext">
+    <Filter Include="JimObtuseSystemEngine\GraphicsRenderer\DeviceContext">
       <UniqueIdentifier>{b80789ef-4314-43b6-a7dc-0c303fef9717}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameEngine\GraphicsRenderer\VertexBuffer">
+    <Filter Include="JimObtuseSystemEngine\GraphicsRenderer\VertexBuffer">
       <UniqueIdentifier>{54f00bd4-d1ec-417d-8db9-792a4bb66858}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameEngine\Utility">
+    <Filter Include="JimObtuseSystemEngine\Utility">
       <UniqueIdentifier>{4dd3eed3-803b-4074-b40b-8c057d44c9db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="JimRendererApp\AppWindow">
+      <UniqueIdentifier>{c5eabde3-0857-4cde-bee3-c6c315ca8158}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="JimRendererApp\AppWindow\Window">
+      <UniqueIdentifier>{9c511277-dec1-4fb1-b8f3-e56d3d7e2cb7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>JimRendererApp</Filter>
     </ClCompile>
-    <ClCompile Include="AppWindow.cpp">
-      <Filter>JimRendererApp</Filter>
-    </ClCompile>
     <ClCompile Include="Window.cpp">
-      <Filter>GameEngine\Window</Filter>
+      <Filter>JimRendererApp\AppWindow\Window</Filter>
     </ClCompile>
     <ClCompile Include="GraphicsRenderer.cpp">
-      <Filter>GameEngine\GraphicsRenderer</Filter>
+      <Filter>JimObtuseSystemEngine\GraphicsRenderer</Filter>
     </ClCompile>
     <ClCompile Include="SwapChain.cpp">
-      <Filter>GameEngine\GraphicsRenderer\SwapChain</Filter>
+      <Filter>JimObtuseSystemEngine\GraphicsRenderer\SwapChain</Filter>
     </ClCompile>
     <ClCompile Include="DeviceContext.cpp">
-      <Filter>GameEngine\GraphicsRenderer\DeviceContext</Filter>
+      <Filter>JimObtuseSystemEngine\GraphicsRenderer\DeviceContext</Filter>
     </ClCompile>
     <ClCompile Include="VertexBuffer.cpp">
-      <Filter>GameEngine\GraphicsRenderer\VertexBuffer</Filter>
+      <Filter>JimObtuseSystemEngine\GraphicsRenderer\VertexBuffer</Filter>
     </ClCompile>
     <ClCompile Include="Utility.cpp">
-      <Filter>GameEngine\Utility</Filter>
+      <Filter>JimObtuseSystemEngine\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="JOSEApp.cpp">
+      <Filter>JimRendererApp</Filter>
+    </ClCompile>
+    <ClCompile Include="JOSEGameEngine.cpp">
+      <Filter>JimObtuseSystemEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="AppWindow.cpp">
+      <Filter>JimRendererApp\AppWindow</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AppWindow.h">
-      <Filter>JimRendererApp</Filter>
-    </ClInclude>
     <ClInclude Include="Window.h">
-      <Filter>GameEngine\Window</Filter>
+      <Filter>JimRendererApp\AppWindow\Window</Filter>
     </ClInclude>
     <ClInclude Include="GraphicsRenderer.h">
-      <Filter>GameEngine\GraphicsRenderer</Filter>
+      <Filter>JimObtuseSystemEngine\GraphicsRenderer</Filter>
     </ClInclude>
     <ClInclude Include="SwapChain.h">
-      <Filter>GameEngine\GraphicsRenderer\SwapChain</Filter>
+      <Filter>JimObtuseSystemEngine\GraphicsRenderer\SwapChain</Filter>
     </ClInclude>
     <ClInclude Include="DeviceContext.h">
-      <Filter>GameEngine\GraphicsRenderer\DeviceContext</Filter>
+      <Filter>JimObtuseSystemEngine\GraphicsRenderer\DeviceContext</Filter>
     </ClInclude>
     <ClInclude Include="VertexBuffer.h">
-      <Filter>GameEngine\GraphicsRenderer\VertexBuffer</Filter>
+      <Filter>JimObtuseSystemEngine\GraphicsRenderer\VertexBuffer</Filter>
     </ClInclude>
     <ClInclude Include="Utility.h">
-      <Filter>GameEngine\Utility</Filter>
+      <Filter>JimObtuseSystemEngine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="JOSEApp.h">
+      <Filter>JimRendererApp</Filter>
+    </ClInclude>
+    <ClInclude Include="JOSEGameEngine.h">
+      <Filter>JimObtuseSystemEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="AppWindow.h">
+      <Filter>JimRendererApp\AppWindow</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
