@@ -10,7 +10,6 @@ AppWindow::AppWindow()
 
 void AppWindow::onCreate()
 {
-	std::cout << "[TEMP] AppWindows::onCreate() is called" << std::endl;
 	Window::onCreate();
 
 	GraphicsRenderer* renderer = GraphicsRenderer::get();

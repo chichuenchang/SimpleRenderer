@@ -106,7 +106,7 @@ bool Window::init()
 bool Window::broadcast()
 {
 	MSG msg;
-	while (::PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) 
+	while (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) 
 	{
 		// examine the application's message queue from Windows
 		if (msg.message == WM_QUIT)

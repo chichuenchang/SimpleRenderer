@@ -16,6 +16,10 @@ public:
 	bool clearRenderTargetColor(SwapChain* swapChain, std::vector<float>& rgba);
 	bool setVertexBuffer(VertexBuffer* vertexBuffer);
 	bool drawTriangleArray(UINT verticesCount, UINT startVertexIndex);
+	bool drawTriangleStrip(UINT verticesCount, UINT startVertexIndex);
+
+
+
 	bool setViewPortSize(UINT width, UINT height);
 
 private:
